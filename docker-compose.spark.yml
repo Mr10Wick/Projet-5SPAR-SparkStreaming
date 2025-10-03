@@ -1,0 +1,18 @@
+services:
+  spark:
+    image: jupyter/pyspark-notebook:spark-3.5.0
+    container_name: spark
+    user: root
+    working_dir: /home/jovyan/work
+    volumes:
+      - ./src:/home/jovyan/work
+    ports:
+      - "4040:4040"   # Spark UI
+      - "8889:8888"   # Jupyter (port différent pour éviter 8888 déjà pris)
+    networks:
+      - stream-net
+    command: [ "bash", "-lc", "tail -f /dev/null" ]
+
+networks:
+  stream-net:
+    external: true

@@ -1,0 +1,29 @@
+services:
+  pg:
+    image: postgres:15
+    container_name: pg
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - 5spar_spark-net
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: pg
+    ports:
+      - "8086:8080"
+    networks:
+      - 5spar_spark-net
+
+volumes:
+  pg_data:
+
+networks:
+  5spar_spark-net:
+    external: true
