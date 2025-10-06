@@ -7,8 +7,8 @@ services:
     volumes:
       - ./src:/home/jovyan/work
     ports:
-      - "4040:4040"   # Spark UI
-      - "8889:8888"   # Jupyter (port différent pour éviter 8888 déjà pris)
+      - "4040-4045:4040-4045"
+      - "8889:8888"
     networks:
       - stream-net
     command: [ "bash", "-lc", "tail -f /dev/null" ]
