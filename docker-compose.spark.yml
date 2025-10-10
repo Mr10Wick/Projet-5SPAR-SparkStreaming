@@ -2,17 +2,11 @@ services:
   spark:
     image: jupyter/pyspark-notebook:spark-3.5.0
     container_name: spark
-    user: root
-    working_dir: /home/jovyan/work
-    volumes:
-      - ./src:/home/jovyan/work
     ports:
-      - "4040-4045:4040-4045"
       - "8889:8888"
-    networks:
-      - stream-net
-    command: [ "bash", "-lc", "tail -f /dev/null" ]
-
-networks:
-  stream-net:
-    external: true
+      - "4040-4045:4040-4045"
+    volumes:
+      - ./src:/home/jovyan/work/src
+    depends_on:
+      - kafka
+      - pg
