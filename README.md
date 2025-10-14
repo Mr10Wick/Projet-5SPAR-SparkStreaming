@@ -1,14 +1,5 @@
 # Projet 5SPAR - Spark Streaming Mastodon
 
-## Part 2: Stream Processing with Spark Structured Streaming
-
-### English Version
-
-In this part of the project, I built a real-time data processing pipeline using **Apache Spark Structured Streaming**, **Apache Kafka**, and **PostgreSQL**.  
-The goal was to simulate a real-time ingestion of Mastodon data (toots), apply transformations, and store aggregated results for further analysis.
-
----
-
 #### 1. Kafka Stream Consumption
 
 I configured Spark to connect to Kafka through the topic `mastodon_stream`. Each message in Kafka is a JSON object representing a Mastodon toot.  
